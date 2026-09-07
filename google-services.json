@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "284307534515",
+    "project_id": "simantab-test",
+    "storage_bucket": "simantab-test.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284307534515:android:4d57b28a68365d77e0f6c6",
+        "android_client_info": {
+          "package_name": "com.bencana.sleman"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuNWGoARcLXZYPnYO4Rz5IN272-BKD5Vk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

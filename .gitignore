@@ -1,0 +1,10 @@
+# B4A build output
+Objects/
+AutoBackups/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE metadata (optional, keep b4a.meta for project config)
+# *.meta

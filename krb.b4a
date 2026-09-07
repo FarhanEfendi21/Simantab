@@ -1,0 +1,412 @@
+﻿Build1=Default,com.bencana.sleman
+File1=1.png
+File10=add-image.jpg
+File11=add-image.png
+File12=akun.png
+File13=batik 12 copy.png
+File14=batik 12.png
+File15=batik 13 copy.png
+File16=batik 13.png
+File17=camping-tent.png
+File18=daftar.png
+File19=foto.png
+File2=2.png
+File20=garis hitam.png
+File21=hapus.png
+File22=header footer.png
+File23=header judul simantab.png
+File24=icon-map.png
+File25=kamera.png
+File26=kirim.png
+File27=layAtensi.bal
+File28=layCamera.bal
+File29=LayClv.bal
+File3=3.png
+File30=layClvFull.bal
+File31=laydatalogistik.bal
+File32=laydatalogistikitems.bal
+File33=layDataPengungsian.bal
+File34=layDataPengungsianItems.bal
+File35=laydataperalatan.bal
+File36=laydataperalatanitems.bal
+File37=layDataWisata.bal
+File38=layDataWisataItems.bal
+File39=layHistoryAtensi.bal
+File4=4.png
+File40=layHistoryBencana.bal
+File41=layHistoryBencanaItems.bal
+File42=layInputAtensi.bal
+File43=layItemsImage.bal
+File44=layItemTelp.bal
+File45=layJarakMerapi.bal
+File46=LayLapor.bal
+File47=LayLogin.bal
+File48=layMenu.bal
+File49=layPanel.bal
+File5=5.png
+File50=LayPilih.bal
+File51=LaySplash.bal
+File52=laySubMenu.bal
+File53=layZoomImage.bal
+File54=LitemMenu.bal
+File55=LitemSubMenu.bal
+File56=location.png
+File57=log.png
+File58=log_header.png
+File59=login.png
+File6=6.png
+File60=logo.png
+File61=lola.png
+File62=lRegister.bal
+File63=lResetPassword.bal
+File64=merah.png
+File65=orange.png
+File66=pal.png
+File67=pic.gif
+File68=SILOLA.png
+File69=simantab.png
+File7=7.png
+File70=stillpicture.bal
+File71=support.png
+File72=switch.png
+File73=tent.png
+File8=8.png
+File9=9.png
+FileGroup1=Default Group\Icon Menu
+FileGroup10=Default Group\Icon
+FileGroup11=Default Group\Icon
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Default Group\Background
+FileGroup15=Default Group
+FileGroup16=Default Group\Background
+FileGroup17=Default Group\Icon
+FileGroup18=Default Group\Button
+FileGroup19=Default Group
+FileGroup2=Default Group\Icon Menu
+FileGroup20=Default Group\Background
+FileGroup21=Default Group\Button
+FileGroup22=Default Group\Background
+FileGroup23=Default Group\Background
+FileGroup24=Default Group\Icon
+FileGroup25=Default Group\Icon
+FileGroup26=Default Group\Button
+FileGroup27=Default Group
+FileGroup28=Default Group
+FileGroup29=Default Group
+FileGroup3=Default Group\Icon Menu
+FileGroup30=Default Group
+FileGroup31=Default Group
+FileGroup32=Default Group
+FileGroup33=Default Group
+FileGroup34=Default Group
+FileGroup35=Default Group
+FileGroup36=Default Group
+FileGroup37=Default Group
+FileGroup38=Default Group
+FileGroup39=Default Group
+FileGroup4=Default Group\Icon Menu
+FileGroup40=Default Group
+FileGroup41=Default Group
+FileGroup42=Default Group
+FileGroup43=Default Group
+FileGroup44=Default Group
+FileGroup45=New Group
+FileGroup46=Default Group
+FileGroup47=New Group
+FileGroup48=New Group
+FileGroup49=Default Group
+FileGroup5=Default Group\Icon Menu
+FileGroup50=Default Group\Splash
+FileGroup51=Default Group\Splash
+FileGroup52=Default Group
+FileGroup53=Default Group
+FileGroup54=New Group
+FileGroup55=Default Group
+FileGroup56=Default Group\Icon
+FileGroup57=Default Group
+FileGroup58=Default Group
+FileGroup59=Default Group\Button
+FileGroup6=Default Group\Icon Menu
+FileGroup60=Default Group\Logo
+FileGroup61=Default Group
+FileGroup62=New Group
+FileGroup63=New Group
+FileGroup64=Default Group\Button
+FileGroup65=Default Group\Button
+FileGroup66=Default Group
+FileGroup67=Default Group
+FileGroup68=Default Group
+FileGroup69=Default Group\Logo
+FileGroup7=Default Group\Icon Menu
+FileGroup70=Default Group
+FileGroup71=New Group
+FileGroup72=Default Group\Icon
+FileGroup73=Default Group\Icon
+FileGroup8=Default Group\Icon Menu
+FileGroup9=Default Group\Icon Menu
+Group=Default Group
+Library1=ahviewpager
+Library10=googlemaps
+Library11=googlemapsextras
+Library12=gps
+Library13=json
+Library14=keyvaluestore2
+Library15=okhttputils2
+Library16=phone
+Library17=randomaccessfile
+Library18=runtimepermissions
+Library19=stringutils
+Library2=appcompat
+Library20=xml2map
+Library21=xui
+Library22=xui views
+Library23=encryption
+Library3=assegmentedtab
+Library4=b4xencryption
+Library5=byteconverter
+Library6=camera2
+Library7=core
+Library8=firebasenotifications
+Library9=fusedlocationprovider
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="34"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~SetApplicationAttribute(android:usesCleartextTraffic,"true") ~\n~~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">	~\n~		<item name="colorPrimary">#BE9638</item>~\n~		<item name="colorPrimaryDark">#D38100</item>~\n~		<item name="colorAccent">#F57F17</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDrawsSystemBarBackgrounds">true</item> ~\n~    </style>	~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.Firebase)~\n~CreateResourceFromFile(Macro, FirebaseNotifications.FirebaseNotifications)~\n~AddApplicationText(~\n~<uses-library~\n~      android:name="org.apache.http.legacy"~\n~      android:required="false"/>~\n~~\n~<meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value="AIzaSyCbnfNW4X3-M8XrWqn0hrClRqZTI0Oe2Uk"/>~\n~)~\n~AddPermission(android.permission.RECORD_AUDIO)~\n~AddManifestText(<queries>~\n~    <package android:name="com.google.android.apps.maps" />~\n~  </queries>)
+Module1=ActCamera
+Module10=CLDataPeralatan
+Module11=CLHistoryBencana
+Module12=CLJarakMerapiKML
+Module13=CLLapor
+Module14=CLLogin
+Module15=CLMenu
+Module16=CLPeringatanDini
+Module17=CLRegister
+Module18=CLResetPassword
+Module19=CLSubMenu
+Module2=ActHome
+Module20=CLTelpPenting
+Module21=CLWisata
+Module22=DBRequestManager
+Module23=FirebaseMessaging
+Module24=HugeImageView
+Module25=Starter
+Module26=Utils
+Module3=ActImageView
+Module4=Api
+Module5=Badger
+Module6=CamEx2
+Module7=CLAtensi
+Module8=CLDataLogistik
+Module9=CLDataPengungsian
+NumberOfFiles=73
+NumberOfLibraries=23
+NumberOfModules=26
+Version=13.7
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Sistem Informasi Sleman Tangguh Bencana
+	#VersionCode: 7
+	#VersionName: 7.1.1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: false
+#End Region
+#Extends	     	: android.support.v7.app.AppCompatActivity
+#AdditionalJar		: com.android.support:support-v4
+#AdditionalJar		: com.google.android.gms:play-services-location
+
+
+'If AAB
+'   #SignKeyFile:D:\SIMANTAB\com.bencana.sleman.keystore
+'    #SignKeyPassword:com.bencana.sleman
+'    #SignKeyAlgorithm: -digestalg SHA1 -sigalg SHA256withRSA
+'End If
+
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+	Type DBResult (Tag As Object, Columns As Map, Rows As List)
+	Type DBCommand (Name As String, Parameters() As Object)
+	Dim kvs As KeyValueStore
+	
+	Public isDevelopment As Boolean = True
+	Public const latMerapi As Float =  -7.540431003854707
+	Public const lonMerapi As Float = 110.44620420034246
+	
+	Public const rdcLink As String = "http://simantab.slemankab.go.id:17183/rdc"
+	Public const rdcEmail As String = "http://simantab.slemankab.go.id:17183/email"
+	Public const urlUpload As String = "http://simantab.slemankab.go.id/uploads/upl.php"
+
+'	Public const rdcLink As String = "http://192.168.40.10:17183/rdc"
+'	Public const rdcEmail As String = "http://192.168.40.10:17183/email"
+'	Public const urlUpload As String = "http://192.168.40.10/app/uploads/upl.php"
+	Type resJrdc (success As Boolean, res As DBResult, errMsg As String)
+	Public const kunci As String = "2eTC@$7JwC@sfkU=Wsk"
+	
+End Sub
+
+
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Dim vp As AHViewPager
+	Dim vpPanels(3) As Panel
+	Dim ToolBar As ACToolBarDark
+	Private ABHelper As ACActionBar
+	Dim container As AHPageContainer
+	Private xui As XUI
+		
+	Dim mLogin As CLLogin
+	Dim mResetPassword As CLResetPassword
+	Dim mRegister As CLRegister
+	Dim rp As RuntimePermissions
+	Private ImageView1 As ImageView
+	Dim altitude As Float
+	Dim gps1 As GPS
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Dim rp As RuntimePermissions
+	rp.CheckAndRequest("android.permission.ACCESS_FINE_LOCATION")
+	Wait For Activity_PermissionResult (Permission As String, Result As Boolean)
+	
+	If FirstTime Then
+		ShowSplash
+	Else
+		Activity.LoadLayout("Laypilih")
+	End If
+	
+	kvs.Initialize(xui.DefaultFolder,"kvs")
+	
+	ToolBar.Initialize("Toolbar")
+	ToolBar.SetAsActionBar
+	ABHelper.Initialize
+	ABHelper.ShowUpIndicator=False
+'	ToolBar.Title= titleAPP
+'	ToolBar.SubTitle= translate(1)
+'	Activity.AddView(ToolBar,0,0,100%X,56dip)
+
+	gps1.Initialize("GPS")
+	gps1.Start(0, 0)
+
+	
+	Activity.Color = Colors.White
+	ToolBar.InitMenuListener
+	InitVP0
+'	mLogin.Initialize(vpPanels(0))
+'	mLogin.createLayout
+End Sub
+
+private Sub ShowSplash
+	Activity.LoadLayout("LaySplash")
+	Sleep(1000)
+	Activity.RemoveAllViews
+	InitVP0
+'	Activity.LoadLayout("laypilih")
+	vpPanels(0).RemoveAllViews
+	vpPanels(0).LoadLayout("laypilih")
+End Sub
+
+Sub Activity_Resume
+	Dim api1 As Api
+	api1.Initialize
+'	If kvs.Contains("iduser")
+	Try
+	If kvs.GetEncrypted("iduser", kunci) <> Null  Then
+		If IsNumber(kvs.GetEncrypted("iduser", kunci))  Then
+			StartActivity(ActHome)
+			Activity.Finish
+		End If
+	End If
+	Catch
+	End Try
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Private Sub ShouldCloseActivity
+	Dim sf As Object = Msgbox2Async("Keluar?","","ya","Tidak","",Null,False)
+	Wait For (sf) Msgbox_Result (Result As Int)
+	If Result = -1  Then
+		Activity.Finish
+	End If
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean 'Return True to consume the event
+	If KeyCode = KeyCodes.KEYCODE_BACK Then
+		Toolbar_NavigationItemClick
+		Return True
+	End If
+	Return False
+End Sub
+
+Sub Toolbar_NavigationItemClick
+	If vp.CurrentPage = 0 Then
+		ShouldCloseActivity
+	Else
+		vp.GotoPage(vp.CurrentPage - 1, True)
+	End If
+End Sub
+
+Sub InitVP0
+	container.Initialize
+	For i = 0 To vpPanels.Length-1
+		vpPanels(i).Initialize("")
+		container.AddPage(vpPanels(i),"")
+	Next
+		
+	vp.Initialize2(container, "vp")
+	
+	Dim TabsHeight As Int=0
+
+	Activity.AddView(vp, 0, ToolBar.Height+TabsHeight, Activity.Width, Activity.Height-ToolBar.Height-TabsHeight)
+	vp.PagingEnabled=False
+	vp.OffscreenPageLimit=4
+	vp.CurrentPage=0
+	
+End Sub
+
+
+Public Sub gotoResetPassword
+	vpPanels(1).RemoveAllViews
+	mResetPassword.Initialize(vpPanels(1))
+	mResetPassword.createLayout
+	vp.GotoPage(1,True)
+End Sub
+
+Public Sub gotoRegister(hp As String)
+	vpPanels(1).RemoveAllViews
+	mRegister.Initialize(vpPanels(1))
+	mRegister.createLayout(hp)
+	vp.GotoPage(1,True)
+End Sub
+
+Public Sub successLogin
+	StartActivity(ActHome)
+	Activity.Finish
+End Sub
+
+Public Sub gotoLogin(hp As String)
+	vpPanels(1).RemoveAllViews
+	mLogin.Initialize(vpPanels(1))
+	mLogin.createLayout
+	mLogin.inputHPRegster(hp)
+	vp.GotoPage(1,True)
+End Sub
+
+
+Private Sub Button1_Click
+	gotoLogin("")
+End Sub
+
+Private Sub Button2_Click
+	gotoRegister("")
+End Sub
