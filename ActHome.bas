@@ -36,6 +36,7 @@ Sub Globals
 	Dim mDataLogistik As CLDataLogistik
 	Dim mDataPeralatan As CLDataPeralatan
 	Dim mSubMenu As CLSubMenu
+	Dim mChatbot As CLChatbot
 	
 	Dim rp As RuntimePermissions
 	
@@ -263,4 +264,11 @@ Public Sub resumeImage
 	If mLapor.IsInitialized Then
 		mLapor.loadImageData
 	End If
+End Sub
+
+Public Sub gotoChatbot
+	vpPanels(1).RemoveAllViews
+	mChatbot.Initialize(vpPanels(1))
+	mChatbot.createLayout
+	vp.GotoPage(1, True)
 End Sub

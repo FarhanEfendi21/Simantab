@@ -147,59 +147,82 @@ FileGroup8=Default Group\Icon Menu
 FileGroup9=Default Group\Icon Menu
 Group=Default Group
 Library1=ahviewpager
-Library10=googlemaps
-Library11=googlemapsextras
-Library12=gps
-Library13=json
-Library14=keyvaluestore2
-Library15=okhttputils2
-Library16=phone
-Library17=randomaccessfile
-Library18=runtimepermissions
-Library19=stringutils
+Library10=designerutils
+Library11=encryption
+Library12=fileprovider
+Library13=firebaseanalytics
+Library14=firebasenotifications
+Library15=fusedlocationprovider
+Library16=gestures
+Library17=googlemaps
+Library18=googlemapsextras
+Library19=gps
 Library2=appcompat
-Library20=xml2map
-Library21=xui
-Library22=xui views
-Library23=encryption
-Library3=assegmentedtab
-Library4=b4xencryption
+Library20=ime
+Library21=javaobject
+Library22=json
+Library23=keyvaluestore
+Library24=keyvaluestore2
+Library25=listofarrays
+Library26=network
+Library27=okhttp
+Library28=okhttputils2
+Library29=phone
+Library3=b4xencryption
+Library30=preferenceactivity
+Library31=preoptimizedclv
+Library32=randomaccessfile
+Library33=reflection
+Library34=runtimepermissions
+Library35=sql
+Library36=stringutils
+Library37=tabstripviewpager
+Library38=viewsex
+Library39=xcustomlistview
+Library4=bitmapcreator
+Library40=xml2map
+Library41=xmlbuilder
+Library42=xmlsax
+Library43=xui
+Library44=xui views
+Library45=assegmentedtab
 Library5=byteconverter
 Library6=camera2
-Library7=core
-Library8=firebasenotifications
-Library9=fusedlocationprovider
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="34"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~SetApplicationAttribute(android:usesCleartextTraffic,"true") ~\n~~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">	~\n~		<item name="colorPrimary">#BE9638</item>~\n~		<item name="colorPrimaryDark">#D38100</item>~\n~		<item name="colorAccent">#F57F17</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDrawsSystemBarBackgrounds">true</item> ~\n~    </style>	~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.Firebase)~\n~CreateResourceFromFile(Macro, FirebaseNotifications.FirebaseNotifications)~\n~AddApplicationText(~\n~<uses-library~\n~      android:name="org.apache.http.legacy"~\n~      android:required="false"/>~\n~~\n~<meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value="AIzaSyCbnfNW4X3-M8XrWqn0hrClRqZTI0Oe2Uk"/>~\n~)~\n~AddPermission(android.permission.RECORD_AUDIO)~\n~AddManifestText(<queries>~\n~    <package android:name="com.google.android.apps.maps" />~\n~  </queries>)
+Library7=contentresolver
+Library8=core
+Library9=dateutils
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="34"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~SetApplicationAttribute(android:usesCleartextTraffic,"true") ~\n~~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">	~\n~		<item name="colorPrimary">#BE9638</item>~\n~		<item name="colorPrimaryDark">#D38100</item>~\n~		<item name="colorAccent">#F57F17</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDrawsSystemBarBackgrounds">true</item> ~\n~    </style>	~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.Firebase)~\n~CreateResourceFromFile(Macro, FirebaseNotifications.FirebaseNotifications)~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~AddApplicationText(~\n~<uses-library~\n~      android:name="org.apache.http.legacy"~\n~      android:required="false"/>~\n~~\n~<meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value="AIzaSyCbnfNW4X3-M8XrWqn0hrClRqZTI0Oe2Uk"/>~\n~)~\n~AddPermission(android.permission.RECORD_AUDIO)~\n~AddManifestText(<queries>~\n~    <package android:name="com.google.android.apps.maps" />~\n~  </queries>)
 Module1=ActCamera
-Module10=CLDataPeralatan
-Module11=CLHistoryBencana
-Module12=CLJarakMerapiKML
-Module13=CLLapor
-Module14=CLLogin
-Module15=CLMenu
-Module16=CLPeringatanDini
-Module17=CLRegister
-Module18=CLResetPassword
-Module19=CLSubMenu
+Module10=CLDataPengungsian
+Module11=CLDataPeralatan
+Module12=CLHistoryBencana
+Module13=CLJarakMerapiKML
+Module14=CLLapor
+Module15=CLLogin
+Module16=CLMenu
+Module17=CLPeringatanDini
+Module18=CLRegister
+Module19=CLResetPassword
 Module2=ActHome
-Module20=CLTelpPenting
-Module21=CLWisata
-Module22=DBRequestManager
-Module23=FirebaseMessaging
-Module24=HugeImageView
-Module25=Starter
-Module26=Utils
+Module20=CLSubMenu
+Module21=CLTelpPenting
+Module22=CLWisata
+Module23=DBRequestManager
+Module24=FirebaseMessaging
+Module25=HugeImageView
+Module26=Starter
+Module27=Utils
 Module3=ActImageView
 Module4=Api
 Module5=Badger
 Module6=CamEx2
 Module7=CLAtensi
-Module8=CLDataLogistik
-Module9=CLDataPengungsian
+Module8=CLChatbot
+Module9=CLDataLogistik
 NumberOfFiles=73
-NumberOfLibraries=23
-NumberOfModules=26
-Version=13.7
+NumberOfLibraries=45
+NumberOfModules=27
+Version=14
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: Sistem Informasi Sleman Tangguh Bencana
@@ -248,6 +271,14 @@ Sub Process_Globals
 	Type resJrdc (success As Boolean, res As DBResult, errMsg As String)
 	Public const kunci As String = "2eTC@$7JwC@sfkU=Wsk"
 	
+	' Konfigurasi Ollama VPS SIGUMI.
+	Public const ollamaLink As String = "https://ollama-mvod.srv1985398.hstgr.cloud"
+	Public const ollamaModel As String = "sigumi-finetuned"
+	' Isi kredensial hanya jika reverse proxy VPS mewajibkan Basic Auth.
+	' Rahasia yang ditanam di APK dapat diekstrak; untuk rilis, gunakan gateway backend.
+	Public const ollamaUser As String = ""
+	Public const ollamaPass As String = ""
+
 End Sub
 
 

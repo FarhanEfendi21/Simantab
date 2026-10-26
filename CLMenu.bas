@@ -96,9 +96,9 @@ Sub tempData
 		mDesc(9)	= "Silola"
 		mTag(9)		= 9
 	
-'		mLokasi(10)	=  "pal.png"
-'		mDesc(10)	= "Peralatan"
-'		mTag(10)	= 10
+		mLokasi(10)	=  "lola.png"
+		mDesc(10)	= "Tanya SiGumi"
+		mTag(10)	= 10
 		
 '	For i = 0 To jmlMenu - 7
 '		mLokasi(i)	=  "Lapor Bencana Sleman.png"
@@ -250,8 +250,8 @@ Private Sub panelMenu_Click
 			CallSub(ActHome, "gotoAtensi")
 		Case 9
 			CallSub(ActHome, "gotologpal")
-'		Case 10
-'			CallSub(ActHome, "gotoDataPeralatan")
+		Case 10
+			CallSub(ActHome, "gotoChatbot")
 		Case 11
 			StartActivity(ActCamera)
 		Case 12
