@@ -40,7 +40,7 @@ End Sub
 
 Private Sub CreateComposer
 	pnlComposer = xui.CreatePanel("")
-	pnlComposer.SetColorAndBorder(Colors.White, 1dip, Colors.RGB(226, 232, 229), 0)
+	pnlComposer.SetColorAndBorder(Utils.AccessibilityPanelColor(Colors.White), 1dip, Colors.RGB(226, 232, 229), 0)
 	Root.AddView(pnlComposer, 0, 0, Root.Width, 74dip)
 	pnlComposer.AddView(etSearch, 14dip, 10dip, Root.Width - 80dip, 54dip)
 	pnlComposer.AddView(lbSearch, Root.Width - 58dip, 15dip, 44dip, 44dip)
@@ -51,31 +51,34 @@ Public Sub Resize
 	Dim pHeight As Int = Root.Height
 	If pWidth <= 0 Or pHeight <= 0 Then Return
 
-	Dim composerHeight As Int = 74dip
+	Dim scale As Float = Utils.AccessibilityFontScale
+	Dim composerHeight As Int = 74dip * scale
 	clv.AsView.SetLayoutAnimated(0, 0, 0, pWidth, pHeight - composerHeight)
 	pnlComposer.SetLayoutAnimated(0, 0, pHeight - composerHeight, pWidth, composerHeight)
-	etSearch.SetLayoutAnimated(0, 14dip, 10dip, pWidth - 80dip, 54dip)
-	lbSearch.SetLayoutAnimated(0, pWidth - 58dip, 15dip, 44dip, 44dip)
+	etSearch.SetLayoutAnimated(0, 14dip, 10dip * scale, pWidth - 80dip, 54dip * scale)
+	lbSearch.SetLayoutAnimated(0, pWidth - 58dip, 15dip * scale, 44dip, 44dip * scale)
 End Sub
 
 Private Sub Appear
 	etSearch.Hint = "Tanya SiMantab..."
 	etSearch.TextColor = Colors.Black
-	etSearch.TextSize = 16
+	etSearch.TextSize = Utils.AccessibilityFontSize(16)
 	etSearch.SingleLine = True
 	etSearch.Gravity = Gravity.CENTER_VERTICAL
 	Dim inputView As B4XView = etSearch
-	inputView.SetColorAndBorder(Colors.White, 1dip, Colors.RGB(211, 218, 215), 20dip)
+	inputView.SetColorAndBorder(Utils.AccessibilityPanelColor(Colors.White), 1dip, Colors.RGB(211, 218, 215), 20dip)
+	If Utils.AccessibilityHighContrast Then etSearch.TextColor = Colors.White
 
 	lbSearch.Text = "➤"
-	lbSearch.TextSize = 20
-	lbSearch.TextColor = Colors.White
+	lbSearch.TextSize = Utils.AccessibilityFontSize(20)
+	lbSearch.TextColor = IIf(Utils.AccessibilityHighContrast, Colors.Black, Colors.White)
 	lbSearch.Gravity = Gravity.CENTER
 	Dim sendView As B4XView = lbSearch
-	sendView.SetColorAndBorder(Colors.RGB(190, 150, 56), 0, Colors.RGB(190, 150, 56), 22dip)
+	Dim sendColor As Int = IIf(Utils.AccessibilityHighContrast, 0xFFFFCC00, Colors.RGB(190, 150, 56))
+	sendView.SetColorAndBorder(sendColor, 0, sendColor, 22dip)
 
-	Root.Color = Colors.RGB(244, 247, 246)
-	clv.AsView.Color = Colors.RGB(244, 247, 246)
+	Root.Color = Utils.AccessibilityPanelColor(Colors.RGB(244, 247, 246))
+	clv.AsView.Color = Utils.AccessibilityPanelColor(Colors.RGB(244, 247, 246))
 	Resize
 
 	clv.Clear
@@ -191,29 +194,32 @@ Private Sub CreateBubble(text As String, isUser As Boolean) As B4XView
 	Dim pWidth As Int = clv.AsView.Width
 	If pWidth <= 0 Then pWidth = 100%x
 	Dim bubbleWidth As Int = Min(300dip, pWidth * 0.82)
+	Dim scale As Float = Utils.AccessibilityFontScale
 	Dim textWidth As Int = Max(40dip, bubbleWidth - 28dip)
-	Dim charsPerLine As Int = Max(12, textWidth / 8dip)
+	Dim charsPerLine As Int = Max(12, textWidth / (8dip * scale))
 	Dim lineCount As Int = Max(1, (text.Length + charsPerLine - 1) / charsPerLine)
-	Dim txtHeight As Int = Max(42dip, lineCount * 20dip + 16dip)
-	p.SetLayoutAnimated(0, 0, 0, pWidth, txtHeight + 14dip)
+	Dim txtHeight As Int = Max(42dip * scale, lineCount * 20dip * scale + 16dip * scale)
+	p.SetLayoutAnimated(0, 0, 0, pWidth, txtHeight + 14dip * scale)
 
 	Dim pnlBG As B4XView = xui.CreatePanel("")
+	Dim highContrast As Boolean = Utils.AccessibilityHighContrast
 	If isUser Then
 		pnlBG.SetColorAndBorder(Colors.RGB(20, 111, 94), 0, Colors.RGB(20, 111, 94), 16dip)
-		p.AddView(pnlBG, pWidth - bubbleWidth - 12dip, 5dip, bubbleWidth, txtHeight)
+		p.AddView(pnlBG, pWidth - bubbleWidth - 12dip, 5dip * scale, bubbleWidth, txtHeight)
 	Else
-		pnlBG.SetColorAndBorder(Colors.White, 1dip, Colors.RGB(226, 232, 229), 16dip)
-		p.AddView(pnlBG, 12dip, 5dip, bubbleWidth, txtHeight)
+		Dim bubbleColor As Int = IIf(highContrast, 0xFF101010, Colors.White)
+		pnlBG.SetColorAndBorder(bubbleColor, 1dip, Colors.RGB(226, 232, 229), 16dip)
+		p.AddView(pnlBG, 12dip, 5dip * scale, bubbleWidth, txtHeight)
 	End If
 
 	Dim lbl As Label
 	lbl.Initialize("")
 	lbl.Text = text
-	lbl.TextSize = 15
-	lbl.TextColor = IIf(isUser, Colors.White, Colors.RGB(38, 50, 45))
+	lbl.TextSize = Utils.AccessibilityFontSize(15)
+	lbl.TextColor = IIf(isUser Or highContrast, Colors.White, Colors.RGB(38, 50, 45))
 	lbl.Gravity = Gravity.CENTER_VERTICAL
 	lbl.SingleLine = False
 
-	pnlBG.AddView(lbl, 14dip, 6dip, bubbleWidth - 28dip, txtHeight - 12dip)
+	pnlBG.AddView(lbl, 14dip, 6dip * scale, bubbleWidth - 28dip, txtHeight - 12dip * scale)
 	Return p
 End Sub

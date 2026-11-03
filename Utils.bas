@@ -12,6 +12,86 @@ Sub Process_Globals
 
 End Sub
 
+Public Sub AccessibilityFontScale As Float
+	Dim saved As Object = Main.kvs.Get("access_font_scale")
+	If saved = Null Or IsNumber(saved) = False Then Return 1
+	Dim scale As Float = saved
+	If scale < 0.8 Or scale > 2 Then Return 1
+	Return scale
+End Sub
+
+Public Sub AccessibilityHighContrast As Boolean
+	Dim saved As Object = Main.kvs.Get("access_high_contrast")
+	If saved = Null Then Return False
+	Return saved = True
+End Sub
+
+Public Sub AccessibilityFontSize(baseSize As Int) As Int
+	Return Max(1, Round(baseSize * AccessibilityFontScale))
+End Sub
+
+Public Sub AccessibilityTextColor(normalColor As Int) As Int
+	If AccessibilityHighContrast Then Return Colors.White
+	Return normalColor
+End Sub
+
+Public Sub AccessibilityPanelColor(normalColor As Int) As Int
+	If AccessibilityHighContrast Then Return Colors.Black
+	Return normalColor
+End Sub
+
+'Call once after a layout is created, and once for each newly-created dynamic row.
+Public Sub ApplyAccessibilityListItem(list As CustomListView)
+	If list.Size = 0 Then Return
+	Dim item As B4XView = list.GetPanel(list.Size - 1)
+	ApplyAccessibilityTree(item)
+End Sub
+
+Public Sub ApplyAccessibilityTree(root As B4XView)
+	If root.IsInitialized = False Then Return
+	Dim highContrast As Boolean = AccessibilityHighContrast
+	If highContrast Then root.Color = Colors.Black
+	For Each v As B4XView In root.GetAllViewsRecursive
+		ApplyAccessibilityView(v, highContrast, True)
+	Next
+End Sub
+
+Public Sub ApplyAccessibilityContrastTree(root As B4XView)
+	If root.IsInitialized = False Then Return
+	Dim highContrast As Boolean = AccessibilityHighContrast
+	If highContrast Then root.Color = Colors.Black
+	For Each v As B4XView In root.GetAllViewsRecursive
+		ApplyAccessibilityView(v, highContrast, False)
+	Next
+End Sub
+
+Private Sub ApplyAccessibilityView(v As B4XView, highContrast As Boolean, scaleText As Boolean)
+	If IsAccessibilityContent(v) Then Return
+	If v Is Panel Or v Is ScrollView Then
+		If highContrast Then v.Color = Colors.Black
+	End If
+	If v Is Label Or v Is Button Or v Is EditText Or v Is CheckBox Or v Is RadioButton Or v Is Spinner Then
+		If scaleText Then v.TextSize = AccessibilityFontSize(v.TextSize)
+		If highContrast Then
+			If v Is Button Or v Is CheckBox Or v Is RadioButton Or v Is Spinner Then
+				v.Color = 0xFFFFCC00
+				v.TextColor = Colors.Black
+			Else
+				v.TextColor = Colors.White
+				If v Is EditText Then v.Color = 0xFF101010
+			End If
+		End If
+	End If
+End Sub
+
+Private Sub IsAccessibilityContent(v As B4XView) As Boolean
+	If v Is ImageView Then Return True
+	Dim viewType As String = GetType(v).ToLowerCase
+	Return viewType.Contains("mapview") Or viewType.Contains("mapfragment") Or _
+		viewType.Contains("surfaceview") Or viewType.Contains("textureview") Or _
+		viewType.Contains("videoview") Or viewType.Contains("hugeimageview")
+End Sub
+
 'clr : FFD38100, FFBE9638,
 'text : FF2B2B2B
 'round : FF7C7C7C
@@ -221,14 +301,14 @@ End Sub
 Sub textDataTidakAda As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(0xFF2B2B2B).Size(16).Alignment("ALIGN_CENTER").Append("Tidak ada data.").PopAll
+	cs.Color(AccessibilityTextColor(0xFF2B2B2B)).Size(AccessibilityFontSize(16)).Alignment("ALIGN_CENTER").Append("Tidak ada data.").PopAll
 	Return cs
 End Sub
 
 Sub textDataTidakDitemukan As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(0xFF2B2B2B).Size(16).Alignment("ALIGN_CENTER").Append("Data tidak ditemukan.").PopAll
+	cs.Color(AccessibilityTextColor(0xFF2B2B2B)).Size(AccessibilityFontSize(16)).Alignment("ALIGN_CENTER").Append("Data tidak ditemukan.").PopAll
 	Return cs
 End Sub
 

@@ -39,12 +39,15 @@ Private Sub Appear
 				Dim keterangan As String= re(res.Columns.Get("keterangan"))
 				Dim jam As String		= re(res.Columns.Get("jam"))
 				clv.AddTextItem(generateText(judul,keterangan, jam),idperingatan)
+				Utils.ApplyAccessibilityListItem(clv)
 			Next
 		Else
 			clv.AddTextItem(Utils.textDataTidakAda,0)
+			Utils.ApplyAccessibilityListItem(clv)
 		End If
 	Else
 		clv.AddTextItem(Utils.textDataTidakDitemukan,0)
+		Utils.ApplyAccessibilityListItem(clv)
 	End If
 	
 '	For i = 0 To 1
@@ -65,8 +68,8 @@ End Sub
 Private Sub generateText(judul As String, detail As String, jam As String) As CSBuilder
 	Dim cs As CSBuilder
 		cs.Initialize
-		cs.Bold.Color(Colors.Black).Size(18).Append(judul).PopAll.Append(CRLF)
-		cs.Color(0xFF3C3C3C).Size(14).Append("Update Jam : ").Append(jam).PopAll.Append(CRLF)
-		cs.Color(Colors.Black).Size(16).Append(detail).PopAll
+		cs.Bold.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(18)).Append(judul).PopAll.Append(CRLF)
+		cs.Color(Utils.AccessibilityTextColor(0xFF3C3C3C)).Size(Utils.AccessibilityFontSize(14)).Append("Update Jam : ").Append(jam).PopAll.Append(CRLF)
+		cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(16)).Append(detail).PopAll
 	Return cs
 End Sub

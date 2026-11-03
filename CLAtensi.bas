@@ -101,13 +101,16 @@ Private Sub loadAtensi
 				Dim atensi As String	= re(res.Columns.Get("atensi"))
 				Dim tanggal As String	= re(res.Columns.Get("jam"))
 				clv.AddTextItem(createLabelHistory(nama,atensi,tanggal),0)
+				Utils.ApplyAccessibilityListItem(clv)
 			Next
 			
 		Else
 			clv.AddTextItem(Utils.textDataTidakAda,0)
+			Utils.ApplyAccessibilityListItem(clv)
 		End If
 	Else
 		clv.AddTextItem(Utils.textDataTidakDitemukan,0)
+		Utils.ApplyAccessibilityListItem(clv)
 	End If
 End Sub
 
@@ -153,8 +156,8 @@ End Sub
 Sub createLabelHistory(nama As String, atensi As String, tanggal As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(Colors.Black).Bold.Size(18).Append("CUACA : ").Append(nama).PopAll
-	cs.Color(0xFF2B2B2B).Size(14).Append(CRLF).Append("Tanggal : " & tanggal).PopAll
-	cs.Color(0xFF2B2B2B).Size(16).Append(CRLF).Append("NET / Atensi : ").Append(CRLF).Append(atensi).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Bold.Size(Utils.AccessibilityFontSize(18)).Append("CUACA : ").Append(nama).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append(CRLF).Append("Tanggal : " & tanggal).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(16)).Append(CRLF).Append("NET / Atensi : ").Append(CRLF).Append(atensi).PopAll
 	Return cs
 End Sub

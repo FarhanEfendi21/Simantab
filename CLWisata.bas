@@ -98,9 +98,11 @@ Private Sub loadData As ResumableSub
 			FakeMark.Remove
 		Else
 			clv.AddTextItem(Utils.textDataTidakAda,0)
+			Utils.ApplyAccessibilityListItem(clv)
 		End If
 	Else
 		clv.AddTextItem(Utils.textDataTidakDitemukan,0)
+		Utils.ApplyAccessibilityListItem(clv)
 	End If
 	
 	Return True
@@ -118,20 +120,21 @@ private Sub createListItem(nama As String, alamat As String, pengelola As String
 	
 	
 	p.SetLayoutAnimated(0, 0, 0, width, pBGList.Top + pBGList.Height )
+	Utils.ApplyAccessibilityTree(p)
 	Return p
 End Sub
 
 Sub createName(nama As String, alamat As String, pengelola As String, phone_number As String, kategori As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(Colors.Black).Bold.Size(16).Append(nama).Append(CRLF).PopAll
-	cs.Color(Colors.Black).Size(14).Append("Pengelola : " & pengelola).Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Bold.Size(Utils.AccessibilityFontSize(16)).Append(nama).Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append("Pengelola : " & pengelola).Append(CRLF).PopAll
 	If phone_number <> "0" And phone_number.Trim.Length > 0 Then
-		cs.Color(Colors.Black).Size(14).Append("Telpon : " & phone_number).Append(CRLF).PopAll
+		cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append("Telpon : " & phone_number).Append(CRLF).PopAll
 	End If
-	cs.Color(Colors.Black).Size(14).Append("Alamat : " & alamat).Append(CRLF).PopAll
-	cs.Color(Colors.Black).Size(14).Append("Kategori : " & kategori).Append(CRLF).PopAll
-	'cs.Color(Colors.Black).Size(14).Append(alamat).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append("Alamat : " & alamat).Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append("Kategori : " & kategori).Append(CRLF).PopAll
+	'cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append(alamat).PopAll
 	Return cs
 End Sub
 
@@ -140,10 +143,10 @@ End Sub
 Private Sub CLV_ItemClick (Index As Int, Value As Object)
 	MapFragment1_MarkerClick(Value)
 
-	clv.GetPanel(Index).Color = Colors.White
+	clv.GetPanel(Index).Color = Utils.AccessibilityPanelColor(Colors.White)
 	Dim pnl As Panel = clv.GetPanel(Index)
 	Dim pnl1 As Panel = pnl.GetView(0)
-	pnl1.Color = Colors.White
+	pnl1.Color = Utils.AccessibilityPanelColor(Colors.White)
 	clv.JumpToItem(Index)
 	
 	setColorCLV(Index)
@@ -154,7 +157,7 @@ Sub setColorCLV (index As Int)
 		If i <> index Then
 			Dim pnl As Panel = clv.GetPanel(i)
 			Dim pnl1 As Panel = pnl.GetView(0)
-			pnl1.Color = 0xFFE3DCDC
+			pnl1.Color = Utils.AccessibilityPanelColor(0xFFE3DCDC)
 		End If
 	Next
 End Sub
@@ -199,8 +202,8 @@ Sub InfoWindowAdapter1_GetInfoContents(Marker1 As Marker) As View
 
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(Colors.White).Bold.Size(14).Append(Marker1.Title).PopAll
-	cs.Color(Colors.White).Size(12).Append(CRLF).Append(Marker1.Snippet).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.White)).Bold.Size(Utils.AccessibilityFontSize(14)).Append(Marker1.Title).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.White)).Size(Utils.AccessibilityFontSize(12)).Append(CRLF).Append(Marker1.Snippet).PopAll
 	
 	lbMaker.Text = cs
 '	Sleep(0)

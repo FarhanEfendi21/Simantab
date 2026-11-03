@@ -25,6 +25,7 @@ Public Sub createLayout
 	Root.LoadLayout("LayLogin")
 	
 	Appear
+	Utils.ApplyAccessibilityTree(Root)
 '	If Main.isDevelopment Then
 '		etHP.Text = "085643233547"
 '		etPassword.Text = "dikau 17081991 blank"
@@ -46,8 +47,8 @@ End Sub
 Private Sub createFontRegister As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Size(16).Color(0xFF181818).Append("Tidak punya akun ? ").PopAll
-	cs.Size(17).Color(0xFF0F18AF).Bold.Append("DAFTAR").PopAll
+	cs.Size(Utils.AccessibilityFontSize(16)).Color(Utils.AccessibilityTextColor(0xFF181818)).Append("Tidak punya akun ? ").PopAll
+	cs.Size(Utils.AccessibilityFontSize(17)).Color(Utils.AccessibilityTextColor(0xFF0F18AF)).Bold.Append("DAFTAR").PopAll
 	Return cs
 End Sub
 

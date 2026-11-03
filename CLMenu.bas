@@ -11,7 +11,7 @@ Sub Class_Globals
 	
 	Type menuData (FileName As String, Title As String, tag As String)
 	
-	Dim jmlMenu As Int = 12
+	Dim jmlMenu As Int = 13
 	Dim mLokasi(jmlMenu) As String '= Array as String("support.png")
 	Dim mDesc(jmlMenu)  As String
 	Dim mTag(jmlMenu)  As String
@@ -100,6 +100,14 @@ Sub tempData
 		mDesc(10)	= "Tanya SiMantab"
 		mTag(10)	= 10
 		
+		mLokasi(11)	=  "edukasi.png"
+		mDesc(11)	= "Edukasi"
+		mTag(11)	= 11
+
+		mLokasi(12)	=  "aksesibilitas.png"
+		mDesc(12)	= "Aksesibilitas"
+		mTag(12)	= 12
+
 '	For i = 0 To jmlMenu - 7
 '		mLokasi(i)	=  "Lapor Bencana Sleman.png"
 '		mDesc(i)	= "Lapor Bencana"
@@ -116,7 +124,13 @@ Private Sub createCLV
 		For x = 0 To 2
 			Dim mindex As Int  = 3*i + x
 			md(x).Initialize
-			md(x) =  CreatemenuDaata(mLokasi(mindex),mDesc(mindex), mTag(mindex))
+			If mindex < jmlMenu Then
+				md(x) =  CreatemenuDaata(mLokasi(mindex),mDesc(mindex), mTag(mindex))
+			Else
+				md(x).FileName = ""
+				md(x).Title = ""
+				md(x).tag = ""
+			End If
 		Next
 		clv.Add(createItems(md),i)
 	Next
@@ -171,6 +185,7 @@ Sub createItems( dt() As menuData) As Panel
 		getLB(i).Text = dt(i).Title
 		getPN(i).Tag = dt(i).tag
 		getPN(i).Visible = True
+		getPN(i).SetElevationAnimated(0, 4dip)
 	Next
 
 	p.Height = Panel1.Height + 8dip
@@ -253,10 +268,9 @@ Private Sub panelMenu_Click
 		Case 10
 			CallSub(ActHome, "gotoChatbot")
 		Case 11
-			StartActivity(ActCamera)
+			CallSub(ActHome, "gotoEdukasi")
 		Case 12
-'			CallSub(ActHome, "gotoKML")
-			
+			CallSub(ActHome, "gotoAksesibilitas")
 	End Select
 End Sub
 

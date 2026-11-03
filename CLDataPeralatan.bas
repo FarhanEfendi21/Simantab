@@ -42,9 +42,11 @@ Private Sub Appear
 			isiData(res)
 		Else
 			clv.AddTextItem(Utils.textDataTidakAda,0)
+			Utils.ApplyAccessibilityListItem(clv)
 		End If
 	Else
 		clv.AddTextItem(Utils.textDataTidakDitemukan,0)
+		Utils.ApplyAccessibilityListItem(clv)
 	End If
 End Sub
 
@@ -63,14 +65,14 @@ End Sub
 Private Sub createLabelTanggal(text As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(0xFF2B2B2B).Size(14).Append("Kategori : " ).Append(text).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append("Kategori : " ).Append(text).PopAll
 	Return cs
 End Sub
 
 Private Sub createLabelstatus(text As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(0xFF2B2B2B).Size(14).Append("Sumber : " ).Append(text).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append("Sumber : " ).Append(text).PopAll
 	Return cs
 End Sub
 
@@ -100,6 +102,7 @@ Sub createListItem( kategori As String, nama As String, merek As String, kondisi
 
 
 	p.SetLayoutAnimated(0, 0, 0, width, pBG.Top + pBG.Height )
+	Utils.ApplyAccessibilityTree(p)
 	Return p
 End Sub
 
@@ -109,11 +112,11 @@ End Sub
 Sub createName(nama As String, merek As String, kondisi As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(Colors.Black).Bold.Size(16).Append("Nama Peralatan : ").Append(nama).Append(CRLF).Append(CRLF).PopAll
-	cs.Color(Colors.Black).Size(14).Append("Merk Peralatan : ").Append(merek).Append(CRLF).PopAll
-	cs.Color(Colors.Black).Size(14).Append("Kondisi Peralatan : ").Append(kondisi).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Bold.Size(Utils.AccessibilityFontSize(16)).Append("Nama Peralatan : ").Append(nama).Append(CRLF).Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append("Merk Peralatan : ").Append(merek).Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append("Kondisi Peralatan : ").Append(kondisi).PopAll
 '	If phone_number <> "0" And phone_number.Trim.Length > 0 Then
-'		cs.Append(CRLF).Color(Colors.Black).Size(16).Append("Telpon : " & phone_number).PopAll
+'		cs.Append(CRLF).Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(16)).Append("Telpon : " & phone_number).PopAll
 '	End If
 	'clv.s
 	Return cs

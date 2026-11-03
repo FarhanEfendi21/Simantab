@@ -37,6 +37,8 @@ Sub Globals
 	Dim mDataPeralatan As CLDataPeralatan
 	Dim mSubMenu As CLSubMenu
 	Dim mChatbot As CLChatbot
+	Dim mEdukasi As CLEdukasi
+	Dim mAksesibilitas As CLAksesibilitas
 	
 	Dim rp As RuntimePermissions
 	
@@ -62,12 +64,13 @@ Sub Activity_Create(FirstTime As Boolean)
 '	ToolBar.Title= titleAPP
 '	ToolBar.SubTitle= translate(1)
 	Activity.AddView(ToolBar,0,0,100%X,56dip)
-	Activity.Color = Colors.White
+	ApplyAccessibilityTheme
 	ToolBar.InitMenuListener
 	InitVP0
 	
 	mMenu.Initialize(vpPanels(0))
 	mMenu.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(0))
 End Sub
 
 Sub Activity_Resume	
@@ -125,10 +128,26 @@ Sub Toolbar_NavigationItemClick
 	If vp.CurrentPage = 0 Then
 		Activity.Finish
 	Else
+		If vp.CurrentPage = 1 Then
+			ApplyAccessibilityTheme
+			mMenu.Initialize(vpPanels(0))
+			mMenu.createLayout
+			Utils.ApplyAccessibilityTree(vpPanels(0))
+		End If
 		vp.GotoPage(vp.CurrentPage - 1, True)
 		ABHelper.ShowUpIndicator = False
 		ToolBar.Title = "Sistem Informasi Sleman Tangguh Bencana"
 	End If
+End Sub
+
+Public Sub ApplyAccessibilityTheme
+	Activity.Color = Utils.AccessibilityPanelColor(Colors.White)
+	If Utils.AccessibilityHighContrast Then
+		ToolBar.Color = Colors.Black
+	Else
+		ToolBar.Color = 0xFFBE9638
+	End If
+	ToolBar.TitleTextColor = Colors.White
 End Sub
 
 Sub InitVP0
@@ -158,6 +177,7 @@ Public Sub gotoJarakMerapi
 		vpPanels(1).RemoveAllViews
 		mJarakMerapi.Initialize(vpPanels(1))
 		mJarakMerapi.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 		vp.GotoPage(1,True)
 	Else
 		ToastMessageShow("Perlu mengaktifkan ijin lokasi",False)
@@ -168,6 +188,7 @@ Public Sub gotoLaporBencana
 	vpPanels(1).RemoveAllViews
 	mLapor.Initialize(vpPanels(1))
 	mLapor.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 	vp.GotoPage(1,True)
 End Sub
 
@@ -175,6 +196,7 @@ Public Sub gotoPeringatanDini
 	vpPanels(1).RemoveAllViews
 	mPeringatanDini.Initialize(vpPanels(1))
 	mPeringatanDini.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 	vp.GotoPage(1,True)
 End Sub
 
@@ -185,12 +207,14 @@ Public Sub gotoTelpPenting
 		vpPanels(1).RemoveAllViews
 		mTelpPenting.Initialize(vpPanels(1))
 		mTelpPenting.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 		vp.GotoPage(1,True)
 	Else
 		Utils.ShowToastTengah("Tidak ada izin untuk melakukan panggilan. Panggilan telpon langsung menggunakan applikasi tidak dapat digunakan.")
 		vpPanels(1).RemoveAllViews
 		mTelpPenting.Initialize(vpPanels(1))
 		mTelpPenting.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 		vp.GotoPage(1,True)
 	End If
 End Sub
@@ -204,6 +228,7 @@ Public Sub gotoDataPengungsian
 		vpPanels(1).RemoveAllViews
 		mPengungsian.Initialize(vpPanels(1))
 		mPengungsian.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 		vp.GotoPage(1,True)
 	Else
 		ToastMessageShow("Perlu mengaktifkan ijin lokasi",False)
@@ -219,6 +244,7 @@ Public Sub gotoWisata
 		vpPanels(1).RemoveAllViews
 		mWisata.Initialize(vpPanels(1))
 		mWisata.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 		vp.GotoPage(1,True)
 	Else
 		ToastMessageShow("Perlu mengaktifkan ijin lokasi",False)
@@ -229,6 +255,7 @@ Public Sub gotoAtensi
 	vpPanels(1).RemoveAllViews
 	mAtensi.Initialize(vpPanels(1))
 	mAtensi.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 	vp.GotoPage(1,True)
 End Sub
 
@@ -236,6 +263,7 @@ Public Sub gotoHistoryBencana
 	vpPanels(1).RemoveAllViews
 	mHistoryBencana.Initialize(vpPanels(1))
 	mHistoryBencana.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 	vp.GotoPage(1,True)
 End Sub
 
@@ -243,6 +271,7 @@ Public Sub gotologpal
 	vpPanels(1).RemoveAllViews
 	mSubMenu.Initialize(vpPanels(1))
 	mSubMenu.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 	vp.GotoPage(1,True)
 End Sub
 
@@ -250,6 +279,7 @@ Public Sub gotoDataLogistik
 	vpPanels(1).RemoveAllViews
 	mDataLogistik.Initialize(vpPanels(1))
 	mDataLogistik.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 	vp.GotoPage(1,True)
 End Sub
 
@@ -257,6 +287,7 @@ Public Sub gotoDataPeralatan
 	vpPanels(1).RemoveAllViews
 	mDataPeralatan.Initialize(vpPanels(1))
 	mDataPeralatan.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 	vp.GotoPage(1,True)
 End Sub
 
@@ -265,6 +296,7 @@ Public Sub gotoKML
 	vpPanels(1).RemoveAllViews
 	mKML.Initialize(vpPanels(1))
 	mKML.createLayout
+	Utils.ApplyAccessibilityTree(vpPanels(1))
 	vp.GotoPage(1,True)
 End Sub
 
@@ -280,7 +312,26 @@ Public Sub gotoChatbot
 	vpPanels(1).RemoveAllViews
 	mChatbot.Initialize(vpPanels(1))
 	mChatbot.createLayout
+	Utils.ApplyAccessibilityContrastTree(vpPanels(1))
 	ToolBar.Title = "Tanya SiMantab"
+	ABHelper.ShowUpIndicator = True
+	vp.GotoPage(1, True)
+End Sub
+
+Public Sub gotoEdukasi
+	vpPanels(1).RemoveAllViews
+	mEdukasi.Initialize(vpPanels(1))
+	mEdukasi.createLayout
+	ToolBar.Title = "Edukasi Bencana"
+	ABHelper.ShowUpIndicator = True
+	vp.GotoPage(1, True)
+End Sub
+
+Public Sub gotoAksesibilitas
+	vpPanels(1).RemoveAllViews
+	mAksesibilitas.Initialize(vpPanels(1))
+	mAksesibilitas.createLayout
+	ToolBar.Title = "Aksesibilitas Inklusif"
 	ABHelper.ShowUpIndicator = True
 	vp.GotoPage(1, True)
 End Sub

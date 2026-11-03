@@ -388,17 +388,17 @@ Private Sub StatusMerapi(jarak As String, status As String, rek As String, jarak
 	Dim cs As CSBuilder
 	CallSubDelayed2(Starter,"notifBablas",jarakSaya)
 	cs.Initialize
-	cs.Color(0xFF2B2B2B).Bold.Size(16).Alignment("ALIGN_CENTER").Append("STATUS MERAPI : ").Append(status.ToUpperCase).PopAll
-	cs.Color(0xFF2B2B2B).Size(14).Append(CRLF).Append(CRLF).Append("JARAK AMAN : ").Append(jarak).Append(" KM").PopAll
-	'cs.Color(0xFF2B2B2B).Size(14).Append(CRLF).Append(CRLF).Append("KETINGGIAN : ").Append(ketinggian).Append(" Mdpl").PopAll
-	cs.Color(0xFF2B2B2B).Size(14).Append(CRLF).Append("REKOMENDASI : ").PopAll
-	cs.Color(0xFF2B2B2B).Size(14).Append(CRLF).Append(rek).Append(CRLF).PopAll
-	cs.Color(0xFF2B2B2B).Size(14).Append(CRLF).Append("JARAK ANDA DARI MERAPI : " & Utils.DisplayDouble("de", "DE",jarakSaya)).Append(" KM").PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Bold.Size(Utils.AccessibilityFontSize(16)).Alignment("ALIGN_CENTER").Append("STATUS MERAPI : ").Append(status.ToUpperCase).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append(CRLF).Append(CRLF).Append("JARAK AMAN : ").Append(jarak).Append(" KM").PopAll
+	'cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append(CRLF).Append(CRLF).Append("KETINGGIAN : ").Append(ketinggian).Append(" Mdpl").PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append(CRLF).Append("REKOMENDASI : ").PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append(CRLF).Append(rek).Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append(CRLF).Append("JARAK ANDA DARI MERAPI : " & Utils.DisplayDouble("de", "DE",jarakSaya)).Append(" KM").PopAll
 	
 	If jarakSaya <= jarak Then
-		cs.Color(Colors.Red).Bold.Size(16).Append(CRLF).Append("SAAT INI ANDA BERADA DI ZONA TIDAK AMAN").Append(CRLF).PopAll
+		cs.Color(Utils.AccessibilityTextColor(Colors.Red)).Bold.Size(Utils.AccessibilityFontSize(16)).Append(CRLF).Append("SAAT INI ANDA BERADA DI ZONA TIDAK AMAN").Append(CRLF).PopAll
 	Else
-		cs.Color(0xFF2B2B2B).Bold.Size(16).Append(CRLF).Append("SAAT INI ANDA BERADA DI ZONA AMAN."& CRLF &"JANGAN LENGAH, TETAP WASPADA DAN PATUHI ARAHAN").Append(CRLF).PopAll
+		cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Bold.Size(Utils.AccessibilityFontSize(16)).Append(CRLF).Append("SAAT INI ANDA BERADA DI ZONA AMAN."& CRLF &"JANGAN LENGAH, TETAP WASPADA DAN PATUHI ARAHAN").Append(CRLF).PopAll
 	End If
 	Return cs
 End Sub
@@ -407,7 +407,7 @@ End Sub
 Private Sub StatusMerapiKosong( jarakSaya As Double) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(0xFF2B2B2B).Size(16).Append(CRLF).Append("JARAK ANDA DARI MERAPI : " & Utils.DisplayDouble("de", "DE",jarakSaya)).Append(" KM").Append(CRLF).PopAll
-	cs.Color(0xFF2B2B2B).Bold.Size(18).Append(CRLF).Append("SAAT INI ANDA BERADA DI ZONA AMAN."& CRLF &"JANGAN LENGAH, TETAP WASPADA DAN PATUHI ARAHAN").Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(16)).Append(CRLF).Append("JARAK ANDA DARI MERAPI : " & Utils.DisplayDouble("de", "DE",jarakSaya)).Append(" KM").Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Bold.Size(Utils.AccessibilityFontSize(18)).Append(CRLF).Append("SAAT INI ANDA BERADA DI ZONA AMAN."& CRLF &"JANGAN LENGAH, TETAP WASPADA DAN PATUHI ARAHAN").Append(CRLF).PopAll
 	Return cs
 End Sub

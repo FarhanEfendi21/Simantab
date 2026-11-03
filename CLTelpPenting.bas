@@ -42,9 +42,11 @@ Private Sub Appear
 			isiData(res)
 		Else
 			clv.AddTextItem(Utils.textDataTidakAda,0)
+			Utils.ApplyAccessibilityListItem(clv)
 		End If
 	Else
 		clv.AddTextItem(Utils.textDataTidakDitemukan,0)
+		Utils.ApplyAccessibilityListItem(clv)
 	End If
 End Sub
 
@@ -83,6 +85,7 @@ Sub createListItem( nama As String, description As String, phone_number As Strin
 
 
 	p.SetLayoutAnimated(0, 0, 0, width, pBGDetail.Top + pBGDetail.Height )
+	Utils.ApplyAccessibilityTree(p)
 	Return p
 End Sub
 
@@ -92,10 +95,10 @@ End Sub
 Sub createName(nama As String, description As String, phone_number As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(Colors.Black).Bold.Size(18).Append(nama).Append(CRLF).PopAll
-	cs.Color(Colors.Black).Size(16).Append(description).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Bold.Size(Utils.AccessibilityFontSize(18)).Append(nama).Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(16)).Append(description).PopAll
 	If phone_number <> "0" And phone_number.Trim.Length > 0 Then
-		cs.Append(CRLF).Color(Colors.Black).Size(16).Append("Telpon : " & phone_number).PopAll
+		cs.Append(CRLF).Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(16)).Append("Telpon : " & phone_number).PopAll
 	End If
 'clv.s
 	Return cs
@@ -118,9 +121,11 @@ Private Sub lbSearch_Click
 				isiData(res)
 			Else
 				clv.AddTextItem(Utils.textDataTidakAda,0)
+				Utils.ApplyAccessibilityListItem(clv)
 			End If
 		Else
 		clv.AddTextItem(Utils.textDataTidakDitemukan,0)
+		Utils.ApplyAccessibilityListItem(clv)
 		End If
 '	Else
 '		Utils.ShowToastTengah("Pencarian nomor telpon minimal 3 karakter")

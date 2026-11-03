@@ -41,9 +41,11 @@ Private Sub Appear
 			isiData(res)
 		Else
 			clv.AddTextItem(Utils.textDataTidakAda,0)
+			Utils.ApplyAccessibilityListItem(clv)
 		End If
 	Else
 		clv.AddTextItem(Utils.textDataTidakDitemukan,0)
+		Utils.ApplyAccessibilityListItem(clv)
 	End If
 End Sub
 
@@ -60,7 +62,7 @@ End Sub
 Private Sub createLabelgudang(text As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(Colors.Black).Bold.Size(14).Append("Nama Gudang : " ).Append(text).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Bold.Size(Utils.AccessibilityFontSize(14)).Append("Nama Gudang : " ).Append(text).PopAll
 	Return cs
 End Sub
 
@@ -89,6 +91,7 @@ Sub createListItem( gudang As String, nama As String, uom As String, jumlah As S
 
 
 	p.SetLayoutAnimated(0, 0, 0, width, pBG.Top + pBG.Height )
+	Utils.ApplyAccessibilityTree(p)
 	Return p
 End Sub
 
@@ -98,11 +101,11 @@ End Sub
 Sub createName(nama As String, jumlah As String, uom As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(Colors.Black).Bold.Size(16).Append("Nama Barang : ").Append(nama).Append(CRLF).PopAll
-	cs.Color(Colors.Black).Size(14).Append("Stok : ").Append(jumlah).PopAll
-	cs.Color(Colors.Black).Size(14).Append("  ").Append(uom).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Bold.Size(Utils.AccessibilityFontSize(16)).Append("Nama Barang : ").Append(nama).Append(CRLF).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append("Stok : ").Append(jumlah).PopAll
+	cs.Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(14)).Append("  ").Append(uom).PopAll
 '	If phone_number <> "0" And phone_number.Trim.Length > 0 Then
-'		cs.Append(CRLF).Color(Colors.Black).Size(16).Append("Telpon : " & phone_number).PopAll
+'		cs.Append(CRLF).Color(Utils.AccessibilityTextColor(Colors.Black)).Size(Utils.AccessibilityFontSize(16)).Append("Telpon : " & phone_number).PopAll
 '	End If
 	'clv.s
 	Return cs

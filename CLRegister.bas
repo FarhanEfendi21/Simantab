@@ -28,6 +28,7 @@ Public Sub createLayout(hp As String)
 		etHP.Text = hp
 	End If
 	Appear
+	Utils.ApplyAccessibilityTree(Root)
 End Sub
 
 Private Sub Appear

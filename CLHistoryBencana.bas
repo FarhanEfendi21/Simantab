@@ -62,9 +62,11 @@ Private Sub loadHistory(filter As String)
 			Next
 		Else
 			clv.AddTextItem(Utils.textDataTidakAda,0)
+			Utils.ApplyAccessibilityListItem(clv)
 		End If
 	Else
 		clv.AddTextItem(Utils.textDataTidakDitemukan,0)
+		Utils.ApplyAccessibilityListItem(clv)
 	End If
 End Sub
 
@@ -86,6 +88,7 @@ Sub createListItem( tanngal As String, detail As String, status As String) As Pa
 	
 
 	p.SetLayoutAnimated(0, 0, 0, width, pBG.Top + pBG.Height )
+	Utils.ApplyAccessibilityTree(p)
 	Return p
 End Sub
 
@@ -93,20 +96,20 @@ End Sub
 Private Sub createLabelTanggal(text As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(0xFF2B2B2B).Size(14).Append("Dibuat : " ).Append(text).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append("Dibuat : " ).Append(text).PopAll
 	Return cs
 End Sub
 
 Private Sub createLabelStatus(text As String) As CSBuilder
 	Dim cs As CSBuilder
 	cs.Initialize
-	cs.Color(0xFF2B2B2B).Size(14).Append("Status : " ).PopAll
+	cs.Color(Utils.AccessibilityTextColor(0xFF2B2B2B)).Size(Utils.AccessibilityFontSize(14)).Append("Status : " ).PopAll
 	If text = "proses" Then
-		cs.Color(0xFFC57900).Size(14).Append(text).PopAll
+		cs.Color(Utils.AccessibilityTextColor(0xFFC57900)).Size(Utils.AccessibilityFontSize(14)).Append(text).PopAll
 	Else If text = "selesai" Then
-		cs.Color(0xFF179100).Size(14).Append(text).PopAll
+		cs.Color(Utils.AccessibilityTextColor(0xFF179100)).Size(Utils.AccessibilityFontSize(14)).Append(text).PopAll
 	Else
-		cs.Color(0xFFD00000).Size(14).Append(text).PopAll
+		cs.Color(Utils.AccessibilityTextColor(0xFFD00000)).Size(Utils.AccessibilityFontSize(14)).Append(text).PopAll
 	End If
 	Return cs
 End Sub

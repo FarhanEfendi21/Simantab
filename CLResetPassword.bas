@@ -32,6 +32,7 @@ Public Sub createLayout
 	Root.LoadLayout("lResetPassword")
 	
 	Appear
+	Utils.ApplyAccessibilityTree(Root)
 '	IME1.AddHeightChangedEvent
 '	IME1_HeightChanged(Root.Height - 120dip,0)
 End Sub
