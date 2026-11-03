@@ -1,4 +1,4 @@
-B4A=true
+﻿B4A=true
 Group=Default Group
 ModulesStructureVersion=1
 Type=Class
@@ -10,6 +10,7 @@ Sub Class_Globals
 	Private clv As CustomListView
 	Private etSearch As EditText
 	Private lbSearch As Label
+	Private pnlComposer As B4XView
 	Private chatBusy As Boolean
 End Sub
 
@@ -21,22 +22,61 @@ End Sub
 
 Public Sub createLayout
 	Root.LoadLayout("LayClv")
+	Dim chatListView As B4XView = clv.AsView
+	Dim listParent As B4XView = chatListView.Parent
+	If listParent.IsInitialized Then chatListView.RemoveViewFromParent
+	Root.RemoveAllViews
+	Root.AddView(chatListView, 0, 0, Root.Width, Root.Height)
+	Dim newInput As EditText
+	newInput.Initialize("etSearch")
+	etSearch = newInput
+	Dim newSend As Label
+	newSend.Initialize("lbSearch")
+	lbSearch = newSend
+	CreateComposer
+	Resize
 	Appear
+End Sub
+
+Private Sub CreateComposer
+	pnlComposer = xui.CreatePanel("")
+	pnlComposer.SetColorAndBorder(Colors.White, 1dip, Colors.RGB(226, 232, 229), 0)
+	Root.AddView(pnlComposer, 0, 0, Root.Width, 74dip)
+	pnlComposer.AddView(etSearch, 14dip, 10dip, Root.Width - 80dip, 54dip)
+	pnlComposer.AddView(lbSearch, Root.Width - 58dip, 15dip, 44dip, 44dip)
+End Sub
+
+Public Sub Resize
+	Dim pWidth As Int = Root.Width
+	Dim pHeight As Int = Root.Height
+	If pWidth <= 0 Or pHeight <= 0 Then Return
+
+	Dim composerHeight As Int = 74dip
+	clv.AsView.SetLayoutAnimated(0, 0, 0, pWidth, pHeight - composerHeight)
+	pnlComposer.SetLayoutAnimated(0, 0, pHeight - composerHeight, pWidth, composerHeight)
+	etSearch.SetLayoutAnimated(0, 14dip, 10dip, pWidth - 80dip, 54dip)
+	lbSearch.SetLayoutAnimated(0, pWidth - 58dip, 15dip, 44dip, 44dip)
 End Sub
 
 Private Sub Appear
 	etSearch.Hint = "Tanya SiMantab..."
 	etSearch.TextColor = Colors.Black
-	etSearch.SingleLine = False
-	etSearch.Color = Colors.White
+	etSearch.TextSize = 16
+	etSearch.SingleLine = True
+	etSearch.Gravity = Gravity.CENTER_VERTICAL
+	Dim inputView As B4XView = etSearch
+	inputView.SetColorAndBorder(Colors.White, 1dip, Colors.RGB(211, 218, 215), 20dip)
 
-	lbSearch.Text = "KIRIM"
-	lbSearch.TextColor = Colors.RGB(255, 255, 255)
-	lbSearch.Color = Colors.RGB(20, 111, 94)
+	lbSearch.Text = "➤"
+	lbSearch.TextSize = 20
+	lbSearch.TextColor = Colors.White
 	lbSearch.Gravity = Gravity.CENTER
+	Dim sendView As B4XView = lbSearch
+	sendView.SetColorAndBorder(Colors.RGB(190, 150, 56), 0, Colors.RGB(190, 150, 56), 22dip)
 
 	Root.Color = Colors.RGB(244, 247, 246)
 	clv.AsView.Color = Colors.RGB(244, 247, 246)
+	Resize
 
 	clv.Clear
 	AddChatBubble("Halo! Saya SiMantab. Saya siap membantu menjawab pertanyaan seputar kebencanaan dan bantuan.", False)
@@ -97,6 +137,7 @@ Private Sub CallOllama(prompt As String)
 	End If
 
 	job.PostString(targetUrl, jg.ToString)
+	job.GetRequest.Timeout = 180000 ' LLM dapat butuh waktu saat model baru aktif / cold start.
 	job.GetRequest.SetContentType("application/json")
 	If Main.ollamaUser <> "" And Main.ollamaPass <> "" Then
 		Dim su As StringUtils
@@ -134,7 +175,7 @@ End Sub
 
 Private Sub FinishSending
 	chatBusy = False
-	lbSearch.Text = "KIRIM"
+	lbSearch.Text = "➤"
 	lbSearch.Enabled = True
 	etSearch.Enabled = True
 End Sub

@@ -70,6 +70,7 @@ File70=stillpicture.bal
 File71=support.png
 File72=switch.png
 File73=tent.png
+File74=chatbot.png
 File8=8.png
 File9=9.png
 FileGroup1=Default Group\Icon Menu
@@ -191,7 +192,7 @@ Library6=camera2
 Library7=contentresolver
 Library8=core
 Library9=dateutils
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="34"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~SetApplicationAttribute(android:usesCleartextTraffic,"true") ~\n~~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">	~\n~		<item name="colorPrimary">#BE9638</item>~\n~		<item name="colorPrimaryDark">#D38100</item>~\n~		<item name="colorAccent">#F57F17</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDrawsSystemBarBackgrounds">true</item> ~\n~    </style>	~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.Firebase)~\n~CreateResourceFromFile(Macro, FirebaseNotifications.FirebaseNotifications)~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~AddApplicationText(~\n~<uses-library~\n~      android:name="org.apache.http.legacy"~\n~      android:required="false"/>~\n~~\n~<meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value="AIzaSyCbnfNW4X3-M8XrWqn0hrClRqZTI0Oe2Uk"/>~\n~)~\n~AddPermission(android.permission.RECORD_AUDIO)~\n~AddManifestText(<queries>~\n~    <package android:name="com.google.android.apps.maps" />~\n~  </queries>)
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="34"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~SetApplicationAttribute(android:usesCleartextTraffic,"true") ~\n~SetActivityAttribute(ActHome, android:windowSoftInputMode, adjustResize|stateHidden)~\n~~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">	~\n~		<item name="colorPrimary">#BE9638</item>~\n~		<item name="colorPrimaryDark">#D38100</item>~\n~		<item name="colorAccent">#F57F17</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDrawsSystemBarBackgrounds">true</item> ~\n~    </style>	~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.Firebase)~\n~CreateResourceFromFile(Macro, FirebaseNotifications.FirebaseNotifications)~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~AddApplicationText(~\n~<uses-library~\n~      android:name="org.apache.http.legacy"~\n~      android:required="false"/>~\n~~\n~<meta-data~\n~  android:name="com.google.android.geo.API_KEY"~\n~  android:value="AIzaSyCbnfNW4X3-M8XrWqn0hrClRqZTI0Oe2Uk"/>~\n~)~\n~AddPermission(android.permission.RECORD_AUDIO)~\n~AddManifestText(<queries>~\n~    <package android:name="com.google.android.apps.maps" />~\n~  </queries>)
 Module1=ActCamera
 Module10=CLDataPengungsian
 Module11=CLDataPeralatan
@@ -219,7 +220,7 @@ Module6=CamEx2
 Module7=CLAtensi
 Module8=CLChatbot
 Module9=CLDataLogistik
-NumberOfFiles=73
+NumberOfFiles=74
 NumberOfLibraries=45
 NumberOfModules=27
 Version=14

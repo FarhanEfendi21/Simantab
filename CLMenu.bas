@@ -96,8 +96,8 @@ Sub tempData
 		mDesc(9)	= "Silola"
 		mTag(9)		= 9
 	
-		mLokasi(10)	=  "lola.png"
-		mDesc(10)	= "Tanya SiGumi"
+		mLokasi(10)	=  "chatbot.png"
+		mDesc(10)	= "Tanya SiMantab"
 		mTag(10)	= 10
 		
 '	For i = 0 To jmlMenu - 7

@@ -58,6 +58,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	ToolBar.SetAsActionBar
 	ABHelper.Initialize
 	ABHelper.ShowUpIndicator=False
+	ToolBar.Title = "Sistem Informasi Sleman Tangguh Bencana"
 '	ToolBar.Title= titleAPP
 '	ToolBar.SubTitle= translate(1)
 	Activity.AddView(ToolBar,0,0,100%X,56dip)
@@ -101,6 +102,13 @@ Sub Activity_Pause (UserClosed As Boolean)
 	Starter.StopFLP
 End Sub
 
+Sub Activity_Resize (Width As Int, Height As Int)
+	If vp.IsInitialized Then
+		vp.SetLayoutAnimated(0, 0, ToolBar.Height, Width, Height - ToolBar.Height)
+	End If
+	If mChatbot.IsInitialized Then mChatbot.Resize
+End Sub
+
 Sub Activity_KeyPress (KeyCode As Int) As Boolean 'Return True to consume the event
 	If KeyCode = KeyCodes.KEYCODE_BACK Then
 		Toolbar_NavigationItemClick
@@ -118,6 +126,8 @@ Sub Toolbar_NavigationItemClick
 		Activity.Finish
 	Else
 		vp.GotoPage(vp.CurrentPage - 1, True)
+		ABHelper.ShowUpIndicator = False
+		ToolBar.Title = "Sistem Informasi Sleman Tangguh Bencana"
 	End If
 End Sub
 
@@ -270,5 +280,7 @@ Public Sub gotoChatbot
 	vpPanels(1).RemoveAllViews
 	mChatbot.Initialize(vpPanels(1))
 	mChatbot.createLayout
+	ToolBar.Title = "Tanya SiMantab"
+	ABHelper.ShowUpIndicator = True
 	vp.GotoPage(1, True)
 End Sub
